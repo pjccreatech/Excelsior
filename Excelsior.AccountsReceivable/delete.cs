@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Excelsior
+namespace Excelsior.AccountsReceivable
 {
-    public partial class Form1 : Form
+    public partial class delete : Form
     {
-        public Form1()
+        public delete()
         {
             InitializeComponent();
         }
