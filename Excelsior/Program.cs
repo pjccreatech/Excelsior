@@ -1,11 +1,9 @@
-﻿using ConfigurationSettings;
+﻿using HertexCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
-namespace Excelsior
+namespace ExcelsiorMain
 {
     static class Program
     {
@@ -16,6 +14,7 @@ namespace Excelsior
         static void Main()
         {
             Application.EnableVisualStyles();
+            DevExpress.XtraEditors.WindowsFormsSettings.LoadApplicationSettings();
             //Application.SetCompatibleTextRenderingDefault(false);
 
             if (MyApp.LicenseDaysLeft < 0)
@@ -28,7 +27,14 @@ namespace Excelsior
                 string msg = string.Format("You license will expire in {0} days. \nYou will not be able to use this application after this period.", MyApp.LicenseDaysLeft);
                 System.Windows.Forms.MessageBox.Show(msg, "Important!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            Application.Run(new Excelsior.UI.Models.Users.frmLogins() { Condition = u => typeof(frmMain) });
+
+            Application.Run(new HertexCore.Models.Users.Forms.frmLogins() 
+            { 
+                Module = HertexCore.Modules.Excelsior,
+                Condition = (u) => typeof(frmMain)
+            });
         }
+
+
     }
 }

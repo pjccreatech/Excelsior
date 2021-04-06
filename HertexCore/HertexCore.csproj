@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39C588BC-6B5D-4099-A72D-735586C02F44}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HertexCore</RootNamespace>
+    <AssemblyName>HertexCore</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="ApproARM">
+      <HintPath>..\Appro\ApproARM.dll</HintPath>
+    </Reference>
+    <Reference Include="CRM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CRM\CRM.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v20.2.UI, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v20.2.Core, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v20.2.Core, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.2.Export, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.2.Core, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v20.2.Core, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.2.UI, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v20.2.Core, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.2.Extensions, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.2.Wizard, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v20.2.Core, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v20.2.Extensions, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Pastel.Evolution">
+      <HintPath>..\..\..\..\..\Evolution SDK\Pastel.Evolution.10.1.0.12\Pastel.Evolution.dll</HintPath>
+    </Reference>
+    <Reference Include="Pastel.Evolution.Common">
+      <HintPath>..\..\..\..\..\Evolution SDK\Pastel.Evolution.10.1.0.12\Pastel.Evolution.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HertexCore.cs" />
+    <Compile Include="HertexData.cs" />
+    <Compile Include="Models\AccountsPayable\Suppliers\Forms\frmSupplierQuickView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\AccountsPayable\Suppliers\Forms\frmSupplierQuickView.Designer.cs">
+      <DependentUpon>frmSupplierQuickView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountsPayable\Suppliers\Suppliers.cs" />
+    <Compile Include="Models\AccountsPayable\Transactions\GoodsReceivedVouchers\frmPurchaseOrdersToGRV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\AccountsPayable\Transactions\GoodsReceivedVouchers\frmPurchaseOrdersToGRV.Designer.cs">
+      <DependentUpon>frmPurchaseOrdersToGRV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountsPayable\Transactions\GoodsReceivedVouchers\frmReceiveStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\AccountsPayable\Transactions\GoodsReceivedVouchers\frmReceiveStock.Designer.cs">
+      <DependentUpon>frmReceiveStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountsPayable\Transactions\GoodsReceivedVouchers\GRVBinLocations.cs" />
+    <Compile Include="Models\AccountsPayable\Transactions\GoodsReceivedVouchers\PurchaseOrderToGRV.cs" />
+    <Compile Include="Models\AccountsReceivable\Customers\Customers.cs" />
+    <Compile Include="Models\AccountsReceivable\Customers\Forms\frmCustomerQuickView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\AccountsReceivable\Customers\Forms\frmCustomerQuickView.Designer.cs">
+      <DependentUpon>frmCustomerQuickView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountsReceivable\Transactions\SalesOrders\Detail.cs" />
+    <Compile Include="Models\AccountsReceivable\Transactions\SalesOrders\Details.cs" />
+    <Compile Include="Models\AccountsReceivable\Transactions\SalesOrders\frmSalesOrderToInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\AccountsReceivable\Transactions\SalesOrders\frmSalesOrderToInvoice.Designer.cs">
+      <DependentUpon>frmSalesOrderToInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountsReceivable\Transactions\SalesOrders\frmSalesOrderOLD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\AccountsReceivable\Transactions\SalesOrders\frmSalesOrderOLD.Designer.cs">
+      <DependentUpon>frmSalesOrderOLD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountsReceivable\Transactions\SalesOrders\frmSalesOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\AccountsReceivable\Transactions\SalesOrders\frmSalesOrders.Designer.cs">
+      <DependentUpon>frmSalesOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountsReceivable\Transactions\SalesOrders\SalesOrder.cs" />
+    <Compile Include="Models\Base\frmDocBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Base\frmDocBase.Designer.cs">
+      <DependentUpon>frmDocBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Base\frmEntityBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Base\frmEntityBase.Designer.cs">
+      <DependentUpon>frmEntityBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Company\Defaults.cs" />
+    <Compile Include="Models\Company\PaymentTypes\frmPaymentType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Company\PaymentTypes\frmPaymentType.Designer.cs">
+      <DependentUpon>frmPaymentType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Company\PaymentTypes\PaymentType.cs" />
+    <Compile Include="Models\Company\Settings\Setting.cs" />
+    <Compile Include="Models\Company\Settings\ucSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Models\Company\Settings\ucSettings.Designer.cs">
+      <DependentUpon>ucSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Company\Tax\TaxRate.cs" />
+    <Compile Include="Models\Other\Addresses\Address.cs" />
+    <Compile Include="Models\Other\Addresses\frm3rdpartyAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Other\Addresses\frm3rdpartyAddress.Designer.cs">
+      <DependentUpon>frm3rdpartyAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Other\Addresses\frmEditAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Other\Addresses\frmEditAddress.Designer.cs">
+      <DependentUpon>frmEditAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stock\Forms\frmAdjustRollLength.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Stock\Forms\frmAdjustRollLength.Designer.cs">
+      <DependentUpon>frmAdjustRollLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stock\Reports\rptStockRollBarcode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Models\Stock\Reports\rptStockRollBarcode.Designer.cs">
+      <DependentUpon>rptStockRollBarcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stock\StockPrices.cs" />
+    <Compile Include="Models\Stock\StockRollItems.cs" />
+    <Compile Include="Models\Users\Forms\frmLogins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Users\Forms\frmLogins.Designer.cs">
+      <DependentUpon>frmLogins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users\Forms\frmManagerOverride.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Users\Forms\frmManagerOverride.Designer.cs">
+      <DependentUpon>frmManagerOverride.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users\Forms\frmManageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Users\Forms\frmManageUsers.Designer.cs">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users\Permissions.cs" />
+    <Compile Include="Models\Users\Users.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Models\AccountsPayable\Suppliers\Forms\frmSupplierQuickView.resx">
+      <DependentUpon>frmSupplierQuickView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\AccountsPayable\Transactions\GoodsReceivedVouchers\frmPurchaseOrdersToGRV.resx">
+      <DependentUpon>frmPurchaseOrdersToGRV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\AccountsPayable\Transactions\GoodsReceivedVouchers\frmReceiveStock.resx">
+      <DependentUpon>frmReceiveStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\AccountsReceivable\Customers\Forms\frmCustomerQuickView.resx">
+      <DependentUpon>frmCustomerQuickView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\AccountsReceivable\Transactions\SalesOrders\frmSalesOrderToInvoice.resx">
+      <DependentUpon>frmSalesOrderToInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\AccountsReceivable\Transactions\SalesOrders\frmSalesOrderOLD.resx">
+      <DependentUpon>frmSalesOrderOLD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\AccountsReceivable\Transactions\SalesOrders\frmSalesOrders.resx">
+      <DependentUpon>frmSalesOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Base\frmDocBase.resx">
+      <DependentUpon>frmDocBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Company\PaymentTypes\frmPaymentType.resx">
+      <DependentUpon>frmPaymentType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Company\Settings\ucSettings.resx">
+      <DependentUpon>ucSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Other\Addresses\frm3rdpartyAddress.resx">
+      <DependentUpon>frm3rdpartyAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Other\Addresses\frmEditAddress.resx">
+      <DependentUpon>frmEditAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Stock\Forms\frmAdjustRollLength.resx">
+      <DependentUpon>frmAdjustRollLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Stock\Reports\rptStockRollBarcode.resx">
+      <DependentUpon>rptStockRollBarcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Users\Forms\frmLogins.resx">
+      <DependentUpon>frmLogins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Users\Forms\frmManagerOverride.resx">
+      <DependentUpon>frmManagerOverride.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Users\Forms\frmManageUsers.resx">
+      <DependentUpon>frmManageUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="..\CTechCore\App.config">
+      <Link>App.config</Link>
+    </None>
+    <None Include="Properties\DataSources\Excelsior.Models.AccountsPayable.Transactions.GoodsReceivedVouchers.PurchaseOrderToGRV.datasource" />
+    <None Include="Properties\DataSources\Excelsior.Models.AccountsReceivable.Transactions.SalesOrders.SalesOrder.datasource" />
+    <None Include="Properties\DataSources\Excelsior.Models.Company.PaymentTypes.PaymentType.datasource" />
+    <None Include="Properties\DataSources\Excelsior.Models.Other.Addresses.Address.datasource" />
+    <None Include="Properties\DataSources\HertexCore.Models.AccountsPayable.Transactions.GoodsReceivedVouchers.PurchaseOrderToGRV.datasource" />
+    <None Include="Properties\DataSources\HertexCore.Models.Company.Settings.Setting.datasource" />
+    <None Include="Properties\DataSources\HertexCore.Models.Users.User.datasource" />
+    <None Include="Properties\DataSources\Pastel.Evolution.SalesOrder.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\container_truck_32px.png" />
+    <None Include="Resources\Icon1.ico" />
+    <Content Include="Resources\iconfinder_box-in_299102.png" />
+    <Content Include="Resources\iconfinder_box-out_299067.png" />
+    <None Include="Resources\Image1.png" />
+    <None Include="Resources\Print_32x32.png" />
+    <None Include="Resources\info_32px.png" />
+    <None Include="Resources\info_24px.png" />
+    <Content Include="Resources\shipping-box-icon32X32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\AccountsReceivable\Customers\CustomerGroups\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CTechCore\CTechCore.csproj">
+      <Project>{748f2525-f68f-4d16-918b-654e457f36e9}</Project>
+      <Name>CTechCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

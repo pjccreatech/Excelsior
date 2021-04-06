@@ -1,37 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excelsior", "Excelsior\Excelsior.csproj", "{39C588BC-6B5D-4099-A72D-735586C02F44}"
-	ProjectSection(ProjectDependencies) = postProject
-		{748F2525-F68F-4D16-918B-654E457F36E9} = {748F2525-F68F-4D16-918B-654E457F36E9}
-		{3732F743-7948-462F-AB61-FA0EBF42CEE0} = {3732F743-7948-462F-AB61-FA0EBF42CEE0}
-		{F404DC63-7530-43C1-B8F9-0A08D13B544E} = {F404DC63-7530-43C1-B8F9-0A08D13B544E}
-		{D9B1816E-F42C-413B-9EC3-E389F98B6651} = {D9B1816E-F42C-413B-9EC3-E389F98B6651}
-		{AD2319E6-3C1C-4E32-A737-E7B1B2B71CEB} = {AD2319E6-3C1C-4E32-A737-E7B1B2B71CEB}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTechCore", "CTechCore\CTechCore.csproj", "{748F2525-F68F-4D16-918B-654E457F36E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excelsior.AccountsPayable", "Excelsior.AccountsPayable\Excelsior.AccountsPayable.csproj", "{D9B1816E-F42C-413B-9EC3-E389F98B6651}"
-	ProjectSection(ProjectDependencies) = postProject
-		{748F2525-F68F-4D16-918B-654E457F36E9} = {748F2525-F68F-4D16-918B-654E457F36E9}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HertexCore", "HertexCore\HertexCore.csproj", "{39C588BC-6B5D-4099-A72D-735586C02F44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excelsior.AccountsReceivable", "Excelsior.AccountsReceivable\Excelsior.AccountsReceivable.csproj", "{AD2319E6-3C1C-4E32-A737-E7B1B2B71CEB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{748F2525-F68F-4D16-918B-654E457F36E9} = {748F2525-F68F-4D16-918B-654E457F36E9}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excelsior.Core", "Excelsior.Core\Excelsior.Core.csproj", "{748F2525-F68F-4D16-918B-654E457F36E9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excelsior.Library", "Excelsior.Library\Excelsior.Library.csproj", "{F404DC63-7530-43C1-B8F9-0A08D13B544E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{748F2525-F68F-4D16-918B-654E457F36E9} = {748F2525-F68F-4D16-918B-654E457F36E9}
-		{D9B1816E-F42C-413B-9EC3-E389F98B6651} = {D9B1816E-F42C-413B-9EC3-E389F98B6651}
-		{AD2319E6-3C1C-4E32-A737-E7B1B2B71CEB} = {AD2319E6-3C1C-4E32-A737-E7B1B2B71CEB}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excelsior.UI", "Excelsior.UI\Excelsior.UI.csproj", "{3732F743-7948-462F-AB61-FA0EBF42CEE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelsiorMain", "Excelsior\ExcelsiorMain.csproj", "{3F7B1266-88F3-4707-8918-CD30A6F3F55C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,32 +15,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{39C588BC-6B5D-4099-A72D-735586C02F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39C588BC-6B5D-4099-A72D-735586C02F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39C588BC-6B5D-4099-A72D-735586C02F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39C588BC-6B5D-4099-A72D-735586C02F44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9B1816E-F42C-413B-9EC3-E389F98B6651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9B1816E-F42C-413B-9EC3-E389F98B6651}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9B1816E-F42C-413B-9EC3-E389F98B6651}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9B1816E-F42C-413B-9EC3-E389F98B6651}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD2319E6-3C1C-4E32-A737-E7B1B2B71CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD2319E6-3C1C-4E32-A737-E7B1B2B71CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD2319E6-3C1C-4E32-A737-E7B1B2B71CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD2319E6-3C1C-4E32-A737-E7B1B2B71CEB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{748F2525-F68F-4D16-918B-654E457F36E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{748F2525-F68F-4D16-918B-654E457F36E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{748F2525-F68F-4D16-918B-654E457F36E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{748F2525-F68F-4D16-918B-654E457F36E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F404DC63-7530-43C1-B8F9-0A08D13B544E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F404DC63-7530-43C1-B8F9-0A08D13B544E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F404DC63-7530-43C1-B8F9-0A08D13B544E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F404DC63-7530-43C1-B8F9-0A08D13B544E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3732F743-7948-462F-AB61-FA0EBF42CEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3732F743-7948-462F-AB61-FA0EBF42CEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3732F743-7948-462F-AB61-FA0EBF42CEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3732F743-7948-462F-AB61-FA0EBF42CEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39C588BC-6B5D-4099-A72D-735586C02F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39C588BC-6B5D-4099-A72D-735586C02F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39C588BC-6B5D-4099-A72D-735586C02F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39C588BC-6B5D-4099-A72D-735586C02F44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F7B1266-88F3-4707-8918-CD30A6F3F55C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F7B1266-88F3-4707-8918-CD30A6F3F55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F7B1266-88F3-4707-8918-CD30A6F3F55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F7B1266-88F3-4707-8918-CD30A6F3F55C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A20570B-CD11-4FB7-9871-409A45861EEB}
 	EndGlobalSection
 EndGlobal

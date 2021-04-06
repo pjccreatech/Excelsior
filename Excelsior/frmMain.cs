@@ -1,5 +1,4 @@
-﻿using ConfigurationSettings;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HertexCore;
 
-namespace Excelsior
+namespace ExcelsiorMain
 {
     public partial class frmMain : Form
     {
@@ -18,6 +18,7 @@ namespace Excelsior
         public frmMain()
         {
             InitializeComponent();
+            ribbonControl1.Minimized = true;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -26,7 +27,7 @@ namespace Excelsior
             //var y = cntxt.MenuItems.Include("SubMenuItems").ToList();
             //var z = x.Where(m => m.ParentID == null).ToList();
             //var items = x.Where(d => d.ParentID == 0).OrderBy(i => i.ID);
-
+            
 
             this.Text = MyApp.Name + " - " + MyApp.Version; ;
             toolStripStatusLabel1.Text = $"{MyApp.Version} | ";
@@ -34,47 +35,47 @@ namespace Excelsior
             toolStripStatusLabel3.Text = $"{MyApp.Evo.Server} [{MyApp.Evo.Database}] | Expiry Date: {MyApp.ExpiryDate.ToString("yyyy-MMM-dd")} |";
             toolStripStatusLabel4.Text = MyApp.ExePath;
 
-            treeList1.DataSource = Excelsior.Library.Models.Navigation.Menus.MenuItemsTable; //SelectMany(m => m.SubMenuItems).Where(m => m.Active).OrderBy(t => t.Text).ToList();
-            treeList1.KeyFieldName = "AutoIDX";
-            treeList1.ParentFieldName = "ParentID";
-            treeList1.OptionsBehavior.PopulateServiceColumns = true;
-            treeList1.ExpandAll();
-            ////MANAGING ITEMS BUTTONS
-            //DevExpress.XtraBars.BarItemVisibility vsble = MyApp.Branch.IsHeadOffice ? DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never;
-            //barbtnSupplier.Visibility = vsble;
-            //barbtnCustomers.Visibility = vsble;
-            //barbtnStock.Visibility = vsble;
-            //barbtnBranches.Visibility = vsble;
-            //barbtnSettings.Visibility = vsble;
+            ReloadNavigation();
 
-            //////TRANSACTION BUTTONS
-            //vsble = MyApp.Branch.IsHeadOffice ? DevExpress.XtraBars.BarItemVisibility.Never : DevExpress.XtraBars.BarItemVisibility.Always;
-            //barbtnPOCreate.Visibility = vsble;
-            //barbtnSOCreate.Visibility = vsble;
-            //barbtnGRV.Visibility = vsble;
-            //barbtnRTS.Visibility = vsble;
-            //barBtnStockIssue.Visibility = vsble;
-            //NuLeafLibrary.Models.frmEntityBase frmDepot = new NuLeafLibrary.Models.frmEntityBase(typeof(DataModelLibrary.Depot));
-            //NuLeafLibrary.Models.frmEntityBase frmGrade = new NuLeafLibrary.Models.frmEntityBase(typeof(DataModelLibrary.Grade));
-            //NuLeafLibrary.Models.frmEntityBase frmCommGrp = new NuLeafLibrary.Models.frmEntityBase(typeof(DataModelLibrary.CommodityGroup));
-            //frmDepot.Show();
-            //frmGrade.Show();
-            //frmCommGrp.Show();
+            MyApp.PastelHlpr.CreateCommonDBConnection("uid=" + MyApp.Common.Username + ";pwd=" + MyApp.Common.Password + ";Initial Catalog=" + MyApp.Common.Database + ";server=" + MyApp.Common.Server + ";Persist Security Info=True;");
+            MyApp.PastelHlpr.SetLicense(MyApp.serialNumber, MyApp.AuthorizationKey);
+            MyApp.PastelHlpr.CreateConnection("server=" + MyApp.Evo.Server + ";initial catalog=" + MyApp.Evo.Database + ";User ID=" + MyApp.Evo.Username + ";Password=" + MyApp.Evo.Password + ";Persist Security Info=True");
+            toolStripStatusLabel2.Text = $"Pastel Version: {MyApp.PastelHlpr.AssemblyVersion.ToString()} | Pastel Company: {MyApp.Evo.Database} | User: {MyApp.Login.User.Username}";
 
-            //NuLeafLibrary.Models.frmEntityBase frmTrans = new NuLeafLibrary.Models.frmEntityBase(typeof(DataModelLibrary.Transporter));
-            //NuLeafLibrary.Models.frmEntityBase frmTruckCond = new NuLeafLibrary.Models.frmEntityBase(typeof(DataModelLibrary.TruckCondition));
-            //NuLeafLibrary.Models.frmEntityBase frmStkGrps = new NuLeafLibrary.Models.frmEntityBase(typeof(DataModelLibrary.StockGroup));
-            //frmTrans.Show();
-            //frmTruckCond.Show();
-            //frmStkGrps.Show();
-
-            //NuLeafLibrary.Models.frmEntityBase frmBrand = new NuLeafLibrary.Models.frmEntityBase(typeof(DataModelLibrary.Brand));
-            //frmBrand.Show();
 
 
         }
 
+        private void ReloadNavigation()
+        {
+            DataView dv = new DataView(CTechCore.Models.Navigation.Menus.MenuItemsTable);
 
+
+            //SecurityLevel = -1: GOD MODE
+            if (MyApp.Login.User.SecurityLevel >= 0)
+            {
+                KeyValuePair<Module, HertexCore.Models.Users.Permissions> excelsior = MyApp.Login.User.Modules.FirstOrDefault(m => m.Key.Equals(HertexCore.Modules.Excelsior));
+                var modules = MyApp.Login.User.Modules.Where(m => !m.Key.Equals(HertexCore.Modules.Excelsior)).Select(m => m).ToList();
+
+                string filter = "Active = 1";
+                filter += $" AND (AutoIDX IN ({(excelsior.Value.Count == 0 ? "0" : string.Join(",", excelsior.Value.Select(p => p.PermissionValue).ToList()))})";
+                if (modules.Count > 0) filter += $" OR ExternalModuleIDX IN ({string.Join(",", modules.Select(m => m.Key.ID.ToString())) })";
+                filter += ")";
+                dv.RowFilter = filter;
+
+                ribbonPageCRM.Visible = MyApp.Login.User.Modules.FirstOrDefault(m => m.Key.Equals(HertexCore.Modules.CRM)).Key != null;
+                ribbonPageAppro.Visible = MyApp.Login.User.Modules.FirstOrDefault(m => m.Key.Equals(HertexCore.Modules.Appro)).Key != null;
+                ribbonPageExcelsior.Visible = MyApp.Login.User.Modules.FirstOrDefault(m => m.Key.Equals(HertexCore.Modules.Excelsior)).Key != null;
+                ribbonPageUsers.Visible = false;
+                ribbonPageCreatech.Visible = false;
+            }
+
+            treeList1.DataSource = dv; //SelectMany(m => m.SubMenuItems).Where(m => m.Active).OrderBy(t => t.Text).ToList();
+            treeList1.KeyFieldName = "AutoIDX";
+            treeList1.ParentFieldName = "ParentID";
+            treeList1.OptionsBehavior.PopulateServiceColumns = true;
+            treeList1.ExpandAll();
+        }
 
         #endregion FORM METHODS
 
@@ -92,14 +93,14 @@ namespace Excelsior
         {
             foreach (Form form in Application.OpenForms)
             {
-                if (form.GetType() == typeof(Excelsior.UI.Models.AccountsRecievable.Transactions.SalesOrders.frmSalesOrder))
+                if (form.GetType() == typeof(HertexCore.Models.AccountsReceivable.Transactions.SalesOrders.frmSalesOrders))
                 {
                     form.Activate();
                     return;
                 }
             }
 
-            Excelsior.UI.Models.AccountsRecievable.Transactions.SalesOrders.frmSalesOrder frmSO = new Excelsior.UI.Models.AccountsRecievable.Transactions.SalesOrders.frmSalesOrder();
+            HertexCore.Models.AccountsReceivable.Transactions.SalesOrders.frmSalesOrders frmSO = new HertexCore.Models.AccountsReceivable.Transactions.SalesOrders.frmSalesOrders();
             frmSO.MdiParent = this;
             frmSO.Show();
         }
@@ -112,6 +113,19 @@ namespace Excelsior
 
         private void barbtnUsers_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(HertexCore.Models.Users.Forms.frmManageUsers))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
+            HertexCore.Models.Users.Forms.frmManageUsers frm = new HertexCore.Models.Users.Forms.frmManageUsers();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void barbtnBranches_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -140,6 +154,20 @@ namespace Excelsior
 
         private void barbtnGRV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(HertexCore.Models.AccountsPayable.Transactions.GoodsReceivedVouchers.frmPurchaseOrdersToGRV))
+                {
+                    form.Activate();
+                    return;
+                }
+            }
+
+            HertexCore.Models.AccountsPayable.Transactions.GoodsReceivedVouchers.frmPurchaseOrdersToGRV frmSO = new HertexCore.Models.AccountsPayable.Transactions.GoodsReceivedVouchers.frmPurchaseOrdersToGRV();
+            frmSO.MdiParent = this;
+            frmSO.Show();
+
+
         }
 
         private void barBtnReports_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -159,25 +187,28 @@ namespace Excelsior
 
         private void treeList1_DoubleClick(object sender, EventArgs e)
         {
-            
-            string selectedNode;
-
-            DevExpress.XtraTreeList.TreeListMultiSelection selectedNodes = treeList1.Selection;             //get the selected node
-            selectedNode =  selectedNodes[0].GetValue(treeList1.Columns[0]).ToString();                     //gets the value of the selected node and store it in the selectedNode variable
-            
-            DevExpress.XtraTreeList.TreeList tree = sender as DevExpress.XtraTreeList.TreeList;
-            DevExpress.XtraTreeList.TreeListHitInfo hi = tree.CalcHitInfo(tree.PointToClient(Control.MousePosition));
-            if (hi.Node != null)
+            try
             {
-                Excelsior.Library.Models.Navigation.Menus.MenuItem mnu = new Library.Models.Navigation.Menus.MenuItem(((DataRowView)tree.GetDataRecordByNode(tree.Selection[0])).Row);
-                Excelsior.Library.Models.Navigation.Menus.DisplayListAll(mnu);
 
+                DevExpress.XtraTreeList.TreeList tree = sender as DevExpress.XtraTreeList.TreeList;
+                DevExpress.XtraTreeList.TreeListHitInfo hi = tree.CalcHitInfo(tree.PointToClient(Control.MousePosition));
+                if (hi.Node != null)
+                {
+                    CTechCore.Models.Navigation.Menus.MenuItem mnu = new CTechCore.Models.Navigation.Menus.MenuItem(((DataRowView)tree.GetDataRecordByNode(tree.Selection[0])).Row);
+                    if (mnu.DisplayAllFormBeforeLoad)
+                        CTechCore.Models.Navigation.Menus.DisplayListAll(mnu);
+                    else
+                        CTechCore.Models.Navigation.Menus.LoadEntityForm(mnu);
+
+                }
             }
-        }
-
-        private void dockPanel2_Click(object sender, EventArgs e)
-        {
-
+            catch (Exception ex)
+            {
+                string msg = $"Error loading screen : {ex.Message}.\r\n {ex.StackTrace}";
+                if (ex.InnerException != null) msg += ex.InnerException.ToString();
+                MessageBox.Show(msg);
+                MyApp.Log.WriteEntry(msg, System.Diagnostics.EventLogEntryType.Error);
+            }   
         }
 
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -187,6 +218,40 @@ namespace Excelsior
 
         private void barbtnSOFind_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
+        }
+
+        private void barBtnNavManager_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CTechCore.Models.Navigation.Manager.frmNavigationManager frm = new CTechCore.Models.Navigation.Manager.frmNavigationManager();
+            frm.ShowDialog();
+        }
+
+        private void dockPanel2_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
+        {
+            if (e.Button.Properties.Caption == "Refresh")
+                ReloadNavigation();
+        }
+
+
+        private void barbtnCRM_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CRM.Form1 frm = new CRM.Form1();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barbtnAppro_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ApproARM.Form1 frm = new ApproARM.Form1();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            HertexCore.Models.Stock.Forms.frmAdjustRollLength frm = new HertexCore.Models.Stock.Forms.frmAdjustRollLength( new HertexCore.Models.Stock.StockRollItems.StockRollItem(2085680));
+            frm.ShowDialog();
 
         }
     }
